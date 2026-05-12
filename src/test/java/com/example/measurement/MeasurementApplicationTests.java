@@ -1,76 +1,84 @@
 package com.example.measurement;
 
+import com.example.measurement.enums.LengthUnit;
+import com.example.measurement.model.QuantityLength;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MeasurementApplicationTests {
 
 	@Test
-	void testFeetEquality_SameValue(){
-		MeasurementApplication.Feet f1 = new MeasurementApplication.Feet(89.6);
-		MeasurementApplication.Feet f2 = new MeasurementApplication.Feet(89.6);
-
-		assertEquals(f1, f2);
-	}
-	@Test
-	void testFeetEquality_DifferValue(){
-		MeasurementApplication.Feet f1 = new MeasurementApplication.Feet(89.6);
-		MeasurementApplication.Feet f2 = new MeasurementApplication.Feet(34.6);
-
-		assertNotEquals(f1,f2);
-	}
-	@Test
-	void testFeetNullable_NullValue(){
-		MeasurementApplication.Feet f1 = new MeasurementApplication.Feet(55.0);
-
-		assertFalse(f1.equals(null));
-	}
-	@Test
-	void testFeetEquality_ClassComparison(){
-		MeasurementApplication.Feet f1 = new MeasurementApplication.Feet(89.6);
-
-		assertFalse(f1.equals("Some String"));
-	}
-	@Test
-	void testFeetEquality_SameReference(){
-		MeasurementApplication.Feet f1 = new MeasurementApplication.Feet(89.6);
-
-		assertTrue(f1.equals(f1));
-	}
-	@Test
-	void testInchEquality_SameValue(){
-		MeasurementApplication.Inch i1 = new MeasurementApplication.Inch(12.5);
-		MeasurementApplication.Inch i2 = new MeasurementApplication.Inch(12.5);
-
-		assertEquals(i1, i2);
+	void testEquality_FeetToFeet_SameValue() {
+		assertEquals(
+				new QuantityLength(1.0, LengthUnit.FEET),
+				new QuantityLength(1.0, LengthUnit.FEET)
+		);
 	}
 
 	@Test
-	void testInchEquality_DifferValue(){
-		MeasurementApplication.Inch i1 = new MeasurementApplication.Inch(12.5);
-		MeasurementApplication.Inch i2 = new MeasurementApplication.Inch(10.0);
-
-		assertNotEquals(i1, i2);
+	void testEquality_InchToInch_SameValue() {
+		assertEquals(
+				new QuantityLength(1.0, LengthUnit.INCH),
+				new QuantityLength(1.0, LengthUnit.INCH)
+		);
 	}
 
 	@Test
-	void testInchNullable_NullValue(){
-		MeasurementApplication.Inch i1 = new MeasurementApplication.Inch(20.0);
-
-		assertFalse(i1.equals(null));
+	void testEquality_FeetToInch_EquivalentValue() {
+		assertEquals(
+				new QuantityLength(1.0, LengthUnit.FEET),
+				new QuantityLength(12.0, LengthUnit.INCH)
+		);
 	}
 
 	@Test
-	void testInchEquality_ClassComparison(){
-		MeasurementApplication.Inch i1 = new MeasurementApplication.Inch(15.0);
-
-		assertFalse(i1.equals("Some String"));
+	void testEquality_InchToFeet_EquivalentValue() {
+		assertEquals(
+				new QuantityLength(12.0, LengthUnit.INCH),
+				new QuantityLength(1.0, LengthUnit.FEET)
+		);
 	}
-	@Test
-	void testInchEquality_SameReference(){
-		MeasurementApplication.Inch i1 = new MeasurementApplication.Inch(18.0);
 
-		assertTrue(i1.equals(i1));
+	@Test
+	void testEquality_FeetToFeet_DifferentValue() {
+		assertNotEquals(
+				new QuantityLength(1.0, LengthUnit.FEET),
+				new QuantityLength(2.0, LengthUnit.FEET)
+		);
+	}
+
+	@Test
+	void testEquality_InchToInch_DifferentValue() {
+		assertNotEquals(
+				new QuantityLength(1.0, LengthUnit.INCH),
+				new QuantityLength(2.0, LengthUnit.INCH)
+		);
+	}
+
+	@Test
+	void testEquality_InvalidUnit() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new QuantityLength(1.0, null);
+		});
+	}
+
+	@Test
+	void testEquality_NullUnit() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new QuantityLength(1.0, null);
+		});
+	}
+
+	@Test
+	void testEquality_SameReference() {
+		QuantityLength q = new QuantityLength(1.0, LengthUnit.FEET);
+		assertEquals(q, q);
+	}
+
+	@Test
+	void testEquality_NullComparison() {
+		QuantityLength q = new QuantityLength(1.0, LengthUnit.FEET);
+		assertNotEquals(q, null);
 	}
 }
