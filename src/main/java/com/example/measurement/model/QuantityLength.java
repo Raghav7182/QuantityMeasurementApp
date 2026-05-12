@@ -4,12 +4,15 @@ import com.example.measurement.enums.LengthUnit;
 
 public class QuantityLength {
 
+    private static final double EPSILON = 0.0001;
+
     private final double value;
     private final LengthUnit unit;
 
-
     public QuantityLength(double value, LengthUnit unit) {
-        if (unit == null) throw new IllegalArgumentException("unit can not null ");
+        if (unit == null) {
+            throw new IllegalArgumentException("Unit cannot be null");
+        }
         this.value = value;
         this.unit = unit;
     }
@@ -26,6 +29,6 @@ public class QuantityLength {
         double thisValue = this.unit.toFeet(this.value);
         double otherValue = other.unit.toFeet(other.value);
 
-        return Double.compare(thisValue, otherValue) == 0;
+        return Math.abs(thisValue - otherValue) < EPSILON;
     }
 }
