@@ -1,6 +1,7 @@
 package com.example.measurement.enums;
 
 public enum LengthUnit {
+
     FEET(1.0),
     INCH(1.0 / 12),
     YARDS(3.0),
