@@ -10,7 +10,6 @@ public class MeasurementApplication {
 
 		SpringApplication.run(MeasurementApplication.class, args);
 
-
 		QuantityLength q1 = new QuantityLength(2.0, LengthUnit.CENTIMETERS);
 		QuantityLength q2 = new QuantityLength(2.0, LengthUnit.YARDS);
 
