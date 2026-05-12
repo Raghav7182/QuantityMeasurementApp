@@ -159,8 +159,10 @@ class MeasurementApplicationTests {
 		assertEquals(yard, inch);
 	}
 
+	// _________________
 	//UC5
 	// 1 (Feet → Inches)
+	// _________________
 	@Test
 	void testConversion_FeetToInches() {
 		assertEquals(12.0,
