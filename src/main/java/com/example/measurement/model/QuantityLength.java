@@ -80,16 +80,6 @@ public class QuantityLength {
     // ========================
     // EQUALS (UC4)
     // ========================
-    public static double convert (double value, LengthUnit sourceUnit, LengthUnit targetUnit) {
-        if(sourceUnit == null || targetUnit == null) {
-            throw new IllegalArgumentException("Units shouldn't be empty!!");
-        }
-        if(!Double.isFinite(value)) {
-            throw new IllegalArgumentException("Invalid numeric value!!");
-        }
-        double valueInFeet = sourceUnit.toFeet (value);
-        return targetUnit. fromFeet(valueInFeet);
-    }
     @Override
     public boolean equals(Object obj) {
 
