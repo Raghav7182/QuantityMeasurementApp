@@ -1,4 +1,6 @@
-package com.example.measurement.enums;
+package com.example.measurement.enumsImpl;
+
+import com.example.measurement.enums.IMeasurable;
 
 public enum LengthUnit implements IMeasurable {
 

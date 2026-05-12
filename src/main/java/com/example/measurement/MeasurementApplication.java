@@ -1,6 +1,6 @@
 package com.example.measurement;
 
-import com.example.measurement.enums.LengthUnit;
+import com.example.measurement.enumsImpl.LengthUnit;
 import com.example.measurement.model.QuantityLength;
 import org.springframework.boot.SpringApplication;
 

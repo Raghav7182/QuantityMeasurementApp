@@ -1,7 +1,6 @@
 package com.example.measurement.model;
 
-import com.example.measurement.enums.WeightUnit;
-import com.example.measurement.enums.IMeasurable;
+import com.example.measurement.enumsImpl.WeightUnit;
 
 public class QuantityWeight {
 
