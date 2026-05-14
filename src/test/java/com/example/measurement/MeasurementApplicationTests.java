@@ -2303,6 +2303,6 @@ class MeasurementApplicationTests {
 		assertFalse(new Quantity<>(1.0, LengthUnit.FEET)
 				.equals(new Quantity<>(1.0, WeightUnit.KILOGRAM)));
 	}
-
+// UC13 ENDS ---------- //
 }
 
